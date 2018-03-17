@@ -2,7 +2,7 @@ let counted = Symbol('counted')
 
 let methods = {
   mustHaveOutput (requiredOutput) {
-    for (let output of this.outputs) {
+    for (let output of this.to) {
       // skip outputs already counted by a different condition
       if (output[counted]) continue
 
@@ -22,7 +22,7 @@ let methods = {
   },
 
   mustPayToAddress (address, amount) {
-    for (let output of this.outputs) {
+    for (let output of this.to) {
       if (output.type !== 'accounts') continue
       if (output.address !== address) continue
       if (output.amount !== amount) continue
